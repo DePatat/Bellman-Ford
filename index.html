@@ -621,15 +621,15 @@ footer a:hover { text-decoration: underline; }
     <div class="hero-content">
       <div class="hero-eyebrow">
         <span></span>
-        Teoría de Grafos · Caminos Mínimos
+        Jose Julian Gamboa · 2250947
       </div>
       <h1 class="hero-title">
         Algoritmo de<br><em>Bellman-Ford</em>
       </h1>
       <p class="hero-sub">
-        Un algoritmo fundamental para encontrar el camino de menor costo desde un nodo fuente
+        Es un algoritmo fundamental para encontrar el camino de menor costo desde un nodo fuente
         hacia todos los demás vértices de un grafo dirigido y ponderado,
-        incluso en presencia de <strong style="color:var(--txt)">aristas con pesos negativos</strong>.
+        incluso al tener <strong style="color:var(--txt)">aristas con pesos negativos</strong>.
       </p>
       <div class="hero-meta">
         <div class="meta-chip">
@@ -641,12 +641,8 @@ footer a:hover { text-decoration: underline; }
           Espacio: <strong>O(V)</strong>
         </div>
         <div class="meta-chip">
-          <i class="fa-solid fa-minus"></i>
-          Pesos negativos: <strong>Sí</strong>
-        </div>
-        <div class="meta-chip">
           <i class="fa-solid fa-rotate"></i>
-          Ciclos negativos: <strong>Detecta</strong>
+          Detecta los <strong>ciclos negativos</strong>
         </div>
       </div>
     </div>
@@ -664,7 +660,7 @@ footer a:hover { text-decoration: underline; }
     <h2 class="sec-title reveal"><i class="fa-solid fa-diagram-project"></i>¿En qué consiste?</h2>
 
     <p class="reveal" style="font-size:15.5px;color:var(--txt-2);line-height:1.85;max-width:760px;margin-bottom:32px">
-      Propuesto por <strong style="color:var(--txt)">Richard Bellman</strong> y <strong style="color:var(--txt)">Lester Ford Jr.</strong> en 1958, el algoritmo calcula
+      El algoritmo calcula
       la distancia mínima desde un vértice de origen hacia todos los demás nodos de un grafo ponderado,
       usando un proceso iterativo de <strong style="color:var(--accent)">relajación de aristas</strong>.
       A diferencia de Dijkstra, tolera aristas con pesos negativos y puede detectar ciclos negativos.
@@ -681,7 +677,7 @@ footer a:hover { text-decoration: underline; }
           Donde <strong>V</strong> es el número de vértices y <strong>E</strong> el número de aristas.
           El algoritmo ejecuta <strong>V − 1 iteraciones</strong>, y en cada una recorre
           <strong>todas las aristas</strong> del grafo para intentar relajarlas.
-          Más lento que Dijkstra (O((V+E) log V)), pero significativamente más versátil.
+          Aunque en caso de llegar a tener un ciclo negativo se añadiria un +E, aunque en términos de notación Big O se suele omitir por ser un caso especial, continuando con la complejidad de O(V · E).
         </p>
       </div>
     </div>
@@ -717,7 +713,7 @@ footer a:hover { text-decoration: underline; }
         <div class="step-num">4</div>
         <div class="step-content">
           <h4>Resultado</h4>
-          <p>Al finalizar, el arreglo <code class="inline">dist[]</code> contiene la distancia mínima desde la fuente hacia cada vértice del grafo. Si se almacena el predecesor de cada nodo, es posible reconstruir el camino exacto.</p>
+          <p>Al finalizar, el arreglo <code class="inline">dist[]</code> contiene la distancia mínima desde la fuente hacia cada vértice del grafo.</p>
         </div>
       </div>
     </div>
@@ -833,11 +829,11 @@ footer a:hover { text-decoration: underline; }
           </div>
           <div class="vd-item">
             <i class="fa-solid fa-check ven-i"></i>
-            <p><strong>Versión distribuida:</strong> Se adapta a entornos distribuidos (como el protocolo RIP), donde cada nodo solo conoce a sus vecinos inmediatos.</p>
+            <p><strong>Corrección garantizada:</strong> Al ser un algoritmo de programación dinámica, siempre produce la solución óptima si no hay ciclos negativos.</p>
           </div>
           <div class="vd-item">
             <i class="fa-solid fa-check ven-i"></i>
-            <p><strong>Corrección garantizada:</strong> Al ser un algoritmo de programación dinámica, siempre produce la solución óptima si no hay ciclos negativos.</p>
+            <p><strong>Versión distribuida:</strong> Se adapta a entornos distribuidos (como el protocolo RIP), donde cada nodo solo conoce a sus vecinos inmediatos.</p>
           </div>
         </div>
       </div>
@@ -874,7 +870,7 @@ footer a:hover { text-decoration: underline; }
     <!-- Comparison table -->
     <h3 class="reveal" style="font-size:17px;font-weight:600;color:var(--txt);margin:40px 0 12px">
       <i class="fa-solid fa-table" style="color:var(--accent-blue);margin-right:8px"></i>
-      Comparativa: Bellman-Ford vs. Dijkstra vs. Floyd-Warshall
+      Comparativa: Bellman-Ford vs. Dijkstra
     </h3>
     <div class="cmp-table-wrap reveal">
       <table>
@@ -883,7 +879,6 @@ footer a:hover { text-decoration: underline; }
             <th>Característica</th>
             <th>Bellman-Ford</th>
             <th>Dijkstra</th>
-            <th>Floyd-Warshall</th>
           </tr>
         </thead>
         <tbody>
@@ -891,43 +886,36 @@ footer a:hover { text-decoration: underline; }
             <td>Complejidad tiempo</td>
             <td class="cell-warn">O(V · E)</td>
             <td class="cell-good">O((V+E) log V)</td>
-            <td class="cell-bad">O(V³)</td>
           </tr>
           <tr>
             <td>Complejidad espacio</td>
             <td class="cell-good">O(V)</td>
             <td class="cell-good">O(V + E)</td>
-            <td class="cell-bad">O(V²)</td>
           </tr>
           <tr>
             <td>Pesos negativos</td>
             <td class="cell-good">✓ Sí</td>
             <td class="cell-bad">✗ No</td>
-            <td class="cell-good">✓ Sí</td>
           </tr>
           <tr>
             <td>Detecta ciclos negativos</td>
             <td class="cell-good">✓ Sí</td>
             <td class="cell-bad">✗ No</td>
-            <td class="cell-good">✓ Sí</td>
           </tr>
           <tr>
             <td>Tipo de solución</td>
             <td>Un origen → todos</td>
             <td>Un origen → todos</td>
-            <td>Todos → todos</td>
           </tr>
           <tr>
             <td>Implementación</td>
             <td class="cell-good">Simple</td>
             <td style="color:var(--txt-2)">Moderada</td>
-            <td class="cell-good">Simple</td>
           </tr>
           <tr>
             <td>Uso típico</td>
             <td>Redes, finanzas</td>
             <td>GPS, mapas</td>
-            <td>Grafos densos</td>
           </tr>
         </tbody>
       </table>
@@ -941,8 +929,7 @@ footer a:hover { text-decoration: underline; }
     <div class="sec-label">04 — Implementación</div>
     <h2 class="sec-title reveal"><i class="fa-solid fa-code"></i>Implementación en Python</h2>
     <p class="reveal" style="font-size:15px;color:var(--txt-2);line-height:1.85;margin-bottom:8px;max-width:720px">
-      Implementación completa utilizando una clase <code class="inline">Grafo</code> con orientación a objetos.
-      Incluye reconstrucción de caminos y detección de ciclos negativos.
+      Versión simplificada del algoritmo. Ideal para implementaciones rápidas y scripts de análisis de datos.
     </p>
 
     <div class="code-wrap reveal">
@@ -952,131 +939,91 @@ footer a:hover { text-decoration: underline; }
           <div class="dot dot-y"></div>
           <div class="dot dot-g"></div>
         </div>
-        <div class="code-lang">Python 3 · bellman_ford.py</div>
+        <div class="code-lang">Python 3 · bellman_ford_simple.py</div>
         <button class="copy-btn" id="copyBtn" onclick="copyCode()">
           <i class="fa-regular fa-copy"></i> Copiar
         </button>
       </div>
-<pre id="codeBlock"><span class="cm"><span class="ln">  1</span># ============================================================</span>
-<span class="cm"><span class="ln">  2</span>#  Algoritmo de Bellman-Ford — Implementación en Python 3</span>
-<span class="cm"><span class="ln">  3</span>#  Complejidad temporal: O(V * E)</span>
-<span class="cm"><span class="ln">  4</span>#  Complejidad espacial: O(V)</span>
-<span class="cm"><span class="ln">  5</span>#  Autor: Implementación educativa</span>
-<span class="cm"><span class="ln">  6</span># ============================================================</span>
-<span class="ln">  7</span>
-<span class="kw"><span class="ln">  8</span>from</span> <span class="var">math</span> <span class="kw">import</span> <span class="const">inf</span>
-<span class="kw"><span class="ln">  9</span>from</span> <span class="var">typing</span> <span class="kw">import</span> <span class="var">Optional</span>
-<span class="ln"> 10</span>
-<span class="ln"> 11</span>
-<span class="kw"><span class="ln"> 12</span>class</span> <span class="fn">Grafo</span><span class="op">:</span>
-<span class="cm"><span class="ln"> 13</span>    """Grafo dirigido y ponderado con soporte para pesos negativos."""</span>
-<span class="ln"> 14</span>
-<span class="kw"><span class="ln"> 15</span>    def</span> <span class="fn">__init__</span><span class="op">(</span><span class="var">self</span>, <span class="var">vertices</span><span class="op">:</span> <span class="var">int</span><span class="op">)</span><span class="op">:</span>
-<span class="cm"><span class="ln"> 16</span>        """</span>
-<span class="cm"><span class="ln"> 17</span>        Inicializa el grafo.</span>
-<span class="cm"><span class="ln"> 18</span>        :param vertices: Número de vértices (nodos) en el grafo.</span>
-<span class="cm"><span class="ln"> 19</span>        """</span>
-<span class="var"><span class="ln"> 20</span>        self</span><span class="op">.</span><span class="var">V</span> <span class="op">=</span> <span class="var">vertices</span>          <span class="cm"># Número de vértices</span>
-<span class="var"><span class="ln"> 21</span>        self</span><span class="op">.</span><span class="var">aristas</span> <span class="op">=</span> <span class="op">[]</span>         <span class="cm"># Lista de aristas: (u, v, peso)</span>
-<span class="ln"> 22</span>
-<span class="kw"><span class="ln"> 23</span>    def</span> <span class="fn">agregar_arista</span><span class="op">(</span><span class="var">self</span>, <span class="var">u</span><span class="op">:</span> <span class="var">int</span>, <span class="var">v</span><span class="op">:</span> <span class="var">int</span>, <span class="var">peso</span><span class="op">:</span> <span class="var">float</span><span class="op">)</span><span class="op">:</span>
-<span class="cm"><span class="ln"> 24</span>        """Agrega una arista dirigida de u hacia v con el peso dado."""</span>
-<span class="var"><span class="ln"> 25</span>        self</span><span class="op">.</span><span class="var">aristas</span><span class="op">.</span><span class="fn">append</span><span class="op">((</span><span class="var">u</span>, <span class="var">v</span>, <span class="var">peso</span><span class="op">))</span>
-<span class="ln"> 26</span>
-<span class="kw"><span class="ln"> 27</span>    def</span> <span class="fn">bellman_ford</span><span class="op">(</span><span class="var">self</span>, <span class="var">origen</span><span class="op">:</span> <span class="var">int</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="var">Optional</span><span class="op">[</span><span class="var">dict</span><span class="op">]:</span>
-<span class="cm"><span class="ln"> 28</span>        """</span>
-<span class="cm"><span class="ln"> 29</span>        Ejecuta el algoritmo de Bellman-Ford desde el vértice 'origen'.</span>
-<span class="cm"><span class="ln"> 30</span></span>
-<span class="cm"><span class="ln"> 31</span>        :param origen: Vértice de inicio.</span>
-<span class="cm"><span class="ln"> 32</span>        :return: Diccionario con distancias y predecesores,</span>
-<span class="cm"><span class="ln"> 33</span>                 o None si se detecta un ciclo negativo.</span>
-<span class="cm"><span class="ln"> 34</span>        """</span>
-<span class="cm"><span class="ln"> 35</span>        # ── PASO 1: Inicialización ──────────────────────────────</span>
-<span class="cm"><span class="ln"> 36</span>        # dist[v] = distancia mínima conocida desde 'origen' hasta v</span>
-<span class="var"><span class="ln"> 37</span>        dist</span> <span class="op">=</span> <span class="op">{</span><span class="var">v</span><span class="op">:</span> <span class="const">inf</span> <span class="kw">for</span> <span class="var">v</span> <span class="kw">in</span> <span class="fn">range</span><span class="op">(</span><span class="var">self</span><span class="op">.</span><span class="var">V</span><span class="op">)}</span>
-<span class="var"><span class="ln"> 38</span>        pred</span> <span class="op">=</span> <span class="op">{</span><span class="var">v</span><span class="op">:</span> <span class="const">None</span> <span class="kw">for</span> <span class="var">v</span> <span class="kw">in</span> <span class="fn">range</span><span class="op">(</span><span class="var">self</span><span class="op">.</span><span class="var">V</span><span class="op">)}</span>  <span class="cm"># Predecesores</span>
-<span class="var"><span class="ln"> 39</span>        dist</span><span class="op">[</span><span class="var">origen</span><span class="op">]</span> <span class="op">=</span> <span class="num">0</span>                           <span class="cm"># Origen tiene distancia 0</span>
-<span class="ln"> 40</span>
-<span class="cm"><span class="ln"> 41</span>        # ── PASO 2: Relajación — repetir V−1 veces ─────────────</span>
-<span class="cm"><span class="ln"> 42</span>        # En cada iteración, garantizamos que al menos un nodo</span>
-<span class="cm"><span class="ln"> 43</span>        # adicional alcanza su distancia mínima definitiva.</span>
-<span class="kw"><span class="ln"> 44</span>        for</span> <span class="var">i</span> <span class="kw">in</span> <span class="fn">range</span><span class="op">(</span><span class="var">self</span><span class="op">.</span><span class="var">V</span> <span class="op">-</span> <span class="num">1</span><span class="op">)</span><span class="op">:</span>
-<span class="kw"><span class="ln"> 45</span>            actualizado</span> <span class="op">=</span> <span class="const">False</span>  <span class="cm"># Optimización: detener si no hay cambios</span>
-<span class="ln"> 46</span>
-<span class="kw"><span class="ln"> 47</span>            for</span> <span class="var">u</span>, <span class="var">v</span>, <span class="var">peso</span> <span class="kw">in</span> <span class="var">self</span><span class="op">.</span><span class="var">aristas</span><span class="op">:</span>
-<span class="cm"><span class="ln"> 48</span>                # Intentamos "relajar" la arista (u → v)</span>
-<span class="kw"><span class="ln"> 49</span>                if</span> <span class="var">dist</span><span class="op">[</span><span class="var">u</span><span class="op">]</span> <span class="op">!=</span> <span class="const">inf</span> <span class="kw">and</span> <span class="var">dist</span><span class="op">[</span><span class="var">u</span><span class="op">]</span> <span class="op">+</span> <span class="var">peso</span> <span class="op">&lt;</span> <span class="var">dist</span><span class="op">[</span><span class="var">v</span><span class="op">]</span><span class="op">:</span>
-<span class="var"><span class="ln"> 50</span>                    dist</span><span class="op">[</span><span class="var">v</span><span class="op">]</span> <span class="op">=</span> <span class="var">dist</span><span class="op">[</span><span class="var">u</span><span class="op">]</span> <span class="op">+</span> <span class="var">peso</span>   <span class="cm"># Actualizar distancia</span>
-<span class="var"><span class="ln"> 51</span>                    pred</span><span class="op">[</span><span class="var">v</span><span class="op">]</span> <span class="op">=</span> <span class="var">u</span>                  <span class="cm"># Registrar predecesor</span>
-<span class="var"><span class="ln"> 52</span>                    actualizado</span> <span class="op">=</span> <span class="const">True</span>
-<span class="ln"> 53</span>
-<span class="kw"><span class="ln"> 54</span>            if not</span> <span class="var">actualizado</span><span class="op">:</span>       <span class="cm"># Convergencia temprana</span>
-<span class="kw"><span class="ln"> 55</span>                break</span>
-<span class="ln"> 56</span>
-<span class="cm"><span class="ln"> 57</span>        # ── PASO 3: Detección de ciclos negativos ──────────────</span>
-<span class="cm"><span class="ln"> 58</span>        # Si aún podemos mejorar alguna distancia en la iteración V,</span>
-<span class="cm"><span class="ln"> 59</span>        # existe un ciclo negativo accesible desde el origen.</span>
-<span class="kw"><span class="ln"> 60</span>        for</span> <span class="var">u</span>, <span class="var">v</span>, <span class="var">peso</span> <span class="kw">in</span> <span class="var">self</span><span class="op">.</span><span class="var">aristas</span><span class="op">:</span>
-<span class="kw"><span class="ln"> 61</span>            if</span> <span class="var">dist</span><span class="op">[</span><span class="var">u</span><span class="op">]</span> <span class="op">!=</span> <span class="const">inf</span> <span class="kw">and</span> <span class="var">dist</span><span class="op">[</span><span class="var">u</span><span class="op">]</span> <span class="op">+</span> <span class="var">peso</span> <span class="op">&lt;</span> <span class="var">dist</span><span class="op">[</span><span class="var">v</span><span class="op">]</span><span class="op">:</span>
-<span class="kw"><span class="ln"> 62</span>                raise</span> <span class="fn">ValueError</span><span class="op">(</span>
-<span class="str"><span class="ln"> 63</span>                    f"Ciclo negativo detectado en la arista ({u} → {v}). "</span>
-<span class="str"><span class="ln"> 64</span>                    "No existe camino mínimo bien definido."</span>
-<span class="ln"> 65</span>                <span class="op">)</span>
-<span class="ln"> 66</span>
-<span class="kw"><span class="ln"> 67</span>        return</span> <span class="op">{</span><span class="str">"distancias"</span><span class="op">:</span> <span class="var">dist</span>, <span class="str">"predecesores"</span><span class="op">:</span> <span class="var">pred</span><span class="op">}</span>
-<span class="ln"> 68</span>
-<span class="kw"><span class="ln"> 69</span>    def</span> <span class="fn">reconstruir_camino</span><span class="op">(</span><span class="var">self</span>, <span class="var">pred</span><span class="op">:</span> <span class="var">dict</span>, <span class="var">destino</span><span class="op">:</span> <span class="var">int</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="var">list</span><span class="op">:</span>
-<span class="cm"><span class="ln"> 70</span>        """Reconstruye el camino mínimo de origen a destino usando predecesores."""</span>
-<span class="var"><span class="ln"> 71</span>        camino</span> <span class="op">=</span> <span class="op">[]</span>
-<span class="var"><span class="ln"> 72</span>        nodo</span> <span class="op">=</span> <span class="var">destino</span>
-<span class="kw"><span class="ln"> 73</span>        while</span> <span class="var">nodo</span> <span class="kw">is not</span> <span class="const">None</span><span class="op">:</span>
-<span class="var"><span class="ln"> 74</span>            camino</span><span class="op">.</span><span class="fn">insert</span><span class="op">(</span><span class="num">0</span>, <span class="var">nodo</span><span class="op">)</span>
-<span class="var"><span class="ln"> 75</span>            nodo</span> <span class="op">=</span> <span class="var">pred</span><span class="op">[</span><span class="var">nodo</span><span class="op">]</span>
-<span class="kw"><span class="ln"> 76</span>        return</span> <span class="var">camino</span>
-<span class="ln"> 77</span>
-<span class="ln"> 78</span>
-<span class="cm"><span class="ln"> 79</span># ── EJEMPLO DE USO ────────────────────────────────────────────</span>
-<span class="kw"><span class="ln"> 80</span>if</span> <span class="var">__name__</span> <span class="op">==</span> <span class="str">"__main__"</span><span class="op">:</span>
-<span class="cm"><span class="ln"> 81</span>    # Grafo con 5 vértices (0 a 4) y aristas con pesos negativos</span>
-<span class="var"><span class="ln"> 82</span>    g</span> <span class="op">=</span> <span class="fn">Grafo</span><span class="op">(</span><span class="num">5</span><span class="op">)</span>
-<span class="ln"> 83</span>
-<span class="cm"><span class="ln"> 84</span>    # Agregar aristas: (origen, destino, peso)</span>
-<span class="var"><span class="ln"> 85</span>    g</span><span class="op">.</span><span class="fn">agregar_arista</span><span class="op">(</span><span class="num">0</span>, <span class="num">1</span>, <span class="op">-</span><span class="num">1</span><span class="op">)</span>
-<span class="var"><span class="ln"> 86</span>    g</span><span class="op">.</span><span class="fn">agregar_arista</span><span class="op">(</span><span class="num">0</span>, <span class="num">2</span>,  <span class="num">4</span><span class="op">)</span>
-<span class="var"><span class="ln"> 87</span>    g</span><span class="op">.</span><span class="fn">agregar_arista</span><span class="op">(</span><span class="num">1</span>, <span class="num">2</span>,  <span class="num">3</span><span class="op">)</span>
-<span class="var"><span class="ln"> 88</span>    g</span><span class="op">.</span><span class="fn">agregar_arista</span><span class="op">(</span><span class="num">1</span>, <span class="num">3</span>,  <span class="num">2</span><span class="op">)</span>
-<span class="var"><span class="ln"> 89</span>    g</span><span class="op">.</span><span class="fn">agregar_arista</span><span class="op">(</span><span class="num">1</span>, <span class="num">4</span>,  <span class="num">2</span><span class="op">)</span>
-<span class="var"><span class="ln"> 90</span>    g</span><span class="op">.</span><span class="fn">agregar_arista</span><span class="op">(</span><span class="num">3</span>, <span class="num">2</span>,  <span class="num">5</span><span class="op">)</span>
-<span class="var"><span class="ln"> 91</span>    g</span><span class="op">.</span><span class="fn">agregar_arista</span><span class="op">(</span><span class="num">3</span>, <span class="num">1</span>, <span class="op">-</span><span class="num">3</span><span class="op">)</span>  <span class="cm"># Arista con peso negativo</span>
-<span class="var"><span class="ln"> 92</span>    g</span><span class="op">.</span><span class="fn">agregar_arista</span><span class="op">(</span><span class="num">4</span>, <span class="num">3</span>, <span class="op">-</span><span class="num">2</span><span class="op">)</span>  <span class="cm"># Arista con peso negativo</span>
-<span class="ln"> 93</span>
-<span class="kw"><span class="ln"> 94</span>    try</span><span class="op">:</span>
-<span class="cm"><span class="ln"> 95</span>        # Ejecutar Bellman-Ford desde el vértice 0</span>
-<span class="var"><span class="ln"> 96</span>        resultado</span> <span class="op">=</span> <span class="var">g</span><span class="op">.</span><span class="fn">bellman_ford</span><span class="op">(</span><span class="var">origen</span><span class="op">=</span><span class="num">0</span><span class="op">)</span>
-<span class="var"><span class="ln"> 97</span>        dist</span> <span class="op">=</span> <span class="var">resultado</span><span class="op">[</span><span class="str">"distancias"</span><span class="op">]</span>
-<span class="var"><span class="ln"> 98</span>        pred</span> <span class="op">=</span> <span class="var">resultado</span><span class="op">[</span><span class="str">"predecesores"</span><span class="op">]</span>
-<span class="ln"> 99</span>
-<span class="kw"><span class="ln">100</span>        print</span><span class="op">(</span><span class="str">"Distancias mínimas desde el vértice 0:"</span><span class="op">)</span>
-<span class="kw"><span class="ln">101</span>        for</span> <span class="var">v</span>, <span class="var">d</span> <span class="kw">in</span> <span class="var">dist</span><span class="op">.</span><span class="fn">items</span><span class="op">()</span><span class="op">:</span>
-<span class="kw"><span class="ln">102</span>            print</span><span class="op">(</span><span class="str">f"  Vértice {v}: {d}"</span><span class="op">)</span>
-<span class="ln">103</span>
-<span class="cm"><span class="ln">104</span>        # Reconstruir camino hacia el vértice 3</span>
-<span class="var"><span class="ln">105</span>        camino</span> <span class="op">=</span> <span class="var">g</span><span class="op">.</span><span class="fn">reconstruir_camino</span><span class="op">(</span><span class="var">pred</span>, <span class="var">destino</span><span class="op">=</span><span class="num">3</span><span class="op">)</span>
-<span class="kw"><span class="ln">106</span>        print</span><span class="op">(</span><span class="str">f"\nCamino mínimo 0 → 3: {' → '.join(map(str, camino))}"</span><span class="op">)</span>
-<span class="ln">107</span>
-<span class="kw"><span class="ln">108</span>    except</span> <span class="fn">ValueError</span> <span class="kw">as</span> <span class="var">e</span><span class="op">:</span>
-<span class="kw"><span class="ln">109</span>        print</span><span class="op">(</span><span class="str">f"Error: {e}"</span><span class="op">)</span>
-<span class="ln">110</span>
-<span class="cm"><span class="ln">111</span># Salida esperada:</span>
-<span class="cm"><span class="ln">112</span>#   Vértice 0: 0</span>
-<span class="cm"><span class="ln">113</span>#   Vértice 1: -1</span>
-<span class="cm"><span class="ln">114</span>#   Vértice 2: 2</span>
-<span class="cm"><span class="ln">115</span>#   Vértice 3: -2</span>
-<span class="cm"><span class="ln">116</span>#   Vértice 4: 1</span>
-<span class="cm"><span class="ln">117</span>#   Camino mínimo 0 → 3: 0 → 1 → 4 → 3</span></pre>
+<pre id="codeBlock"><span class="kw"><span class="ln"> 1</span>def</span> <span class="fn">bellman_ford</span><span class="op">(</span><span class="var">vertices</span><span class="op">,</span> <span class="var">aristas</span><span class="op">,</span> <span class="var">inicio</span><span class="op">)</span><span class="op">:</span>
+<span class="cm"><span class="ln"> 2</span>    # Paso 1: Inicializar distancias desde el origen a todos los demás como infinito</span>
+<span class="var"><span class="ln"> 3</span>    distancias</span> <span class="op">=</span> <span class="op">{</span><span class="var">v</span><span class="op">:</span> <span class="fn">float</span><span class="op">(</span><span class="str">'inf'</span><span class="op">)</span> <span class="kw">for</span> <span class="var">v</span> <span class="kw">in</span> <span class="var">vertices</span><span class="op">}</span>
+<span class="var"><span class="ln"> 4</span>    distancias</span><span class="op">[</span><span class="var">inicio</span><span class="op">]</span> <span class="op">=</span> <span class="num">0</span>
+<span class="ln"> 5</span>    
+<span class="cm"><span class="ln"> 6</span>    # Paso 2: Relajar todas las aristas V - 1 veces</span>
+<span class="kw"><span class="ln"> 7</span>    for</span> <span class="var">_</span> <span class="kw">in</span> <span class="fn">range</span><span class="op">(</span><span class="fn">len</span><span class="op">(</span><span class="var">vertices</span><span class="op">)</span> <span class="op">-</span> <span class="num">1</span><span class="op">)</span><span class="op">:</span>
+<span class="kw"><span class="ln"> 8</span>        for</span> <span class="var">u</span><span class="op">,</span> <span class="var">v</span><span class="op">,</span> <span class="var">peso</span> <span class="kw">in</span> <span class="var">aristas</span><span class="op">:</span>
+<span class="kw"><span class="ln"> 9</span>            if</span> <span class="var">distancias</span><span class="op">[</span><span class="var">u</span><span class="op">]</span> <span class="op">!=</span> <span class="fn">float</span><span class="op">(</span><span class="str">'inf'</span><span class="op">)</span> <span class="kw">and</span> <span class="var">distancias</span><span class="op">[</span><span class="var">u</span><span class="op">]</span> <span class="op">+</span> <span class="var">peso</span> <span class="op">&lt;</span> <span class="var">distancias</span><span class="op">[</span><span class="var">v</span><span class="op">]</span><span class="op">:</span>
+<span class="var"><span class="ln">10</span>                distancias</span><span class="op">[</span><span class="var">v</span><span class="op">]</span> <span class="op">=</span> <span class="var">distancias</span><span class="op">[</span><span class="var">u</span><span class="op">]</span> <span class="op">+</span> <span class="var">peso</span>
+<span class="ln">11</span>                
+<span class="cm"><span class="ln">12</span>    # Paso 3: Verificar ciclos negativos</span>
+<span class="kw"><span class="ln">13</span>    for</span> <span class="var">u</span><span class="op">,</span> <span class="var">v</span><span class="op">,</span> <span class="var">peso</span> <span class="kw">in</span> <span class="var">aristas</span><span class="op">:</span>
+<span class="kw"><span class="ln">14</span>        if</span> <span class="var">distancias</span><span class="op">[</span><span class="var">u</span><span class="op">]</span> <span class="op">!=</span> <span class="fn">float</span><span class="op">(</span><span class="str">'inf'</span><span class="op">)</span> <span class="kw">and</span> <span class="var">distancias</span><span class="op">[</span><span class="var">u</span><span class="op">]</span> <span class="op">+</span> <span class="var">peso</span> <span class="op">&lt;</span> <span class="var">distancias</span><span class="op">[</span><span class="var">v</span><span class="op">]</span><span class="op">:</span>
+<span class="kw"><span class="ln">15</span>            print</span><span class="op">(</span><span class="str">"¡Atención! El grafo contiene un ciclo de peso negativo."</span><span class="op">)</span>
+<span class="kw"><span class="ln">16</span>            return</span> <span class="const">None</span>
+<span class="ln">17</span>
+<span class="kw"><span class="ln">18</span>    return</span> <span class="var">distancias</span>
+<span class="ln">19</span>
+<span class="cm"><span class="ln">20</span># Datos de prueba</span>
+<span class="var"><span class="ln">21</span>nodos</span> <span class="op">=</span> <span class="op">[</span><span class="num">1</span><span class="op">,</span> <span class="num">2</span><span class="op">,</span> <span class="num">3</span><span class="op">,</span> <span class="num">4</span><span class="op">]</span>
+<span class="var"><span class="ln">22</span>conexiones</span> <span class="op">=</span> <span class="op">[</span><span class="op">(</span><span class="num">1</span><span class="op">,</span> <span class="num">2</span><span class="op">,</span> <span class="num">4</span><span class="op">)</span><span class="op"></span> <span class="op">(</span><span class="num">1,</span><span class="op"></span> <span class="num">4,</span><span class="op"></span> <span class="num">5</span><span class="op">)</span><span class="op"></span> <span class="op"></span>>(</span><span class="num">4,</span><span class="op"></span> <span class="num">3,</span><span class="op"></span> <span class="num">3</span><span class="op">)</span><span class="op"></span> <span class="op">(</span><span class="num">3,</span><span class="op"></span> <span class="num">2,</span><span class="op"></span> <span class="op">-</span><span class="num">10</span><span class="op">)</span><span class="op">]</span>
+<span class="var"><span class="ln">23</span>resultado</span> <span class="op">=</span> <span class="fn">bellman_ford</span><span class="op">(</span><span class="var">nodos</span><span class="op">,</span> <span class="var">conexiones</span><span class="op">,</span> <span class="num">1</span><span class="op">)</span></pre>
     </div>
   </div>
 </section>
+
+<script>
+function copyCode() {
+  const codeToCopy = `def bellman_ford(vertices, aristas, inicio):
+    # Paso 1: Inicializar distancias desde el origen a todos los demás como infinito
+    distancias = {v: float('inf') for v in vertices}
+    distancias[inicio] = 0
+    
+    # Paso 2: Relajar todas las aristas V - 1 veces
+    for _ in range(len(vertices) - 1):
+        for u, v, peso in aristas:
+            if distancias[u] != float('inf') and distancias[u] + peso < distancias[v]:
+                distancias[v] = distancias[u] + peso
+                
+    # Paso 3: Verificar ciclos negativos
+    for u, v, peso in aristas:
+        if distancias[u] != float('inf') and distancias[u] + peso < distancias[v]:
+            print("¡Atención! El grafo contiene un ciclo de peso negativo.")
+            return None
+
+    return distancias
+
+# Datos de prueba
+nodos = [1, 2, 3, 4]
+conexiones = [(1, 2, 4), (1, 4, 5), (4, 3, 3), (3, 2, -10)]
+resultado = bellman_ford(nodos, conexiones, 1)`;
+
+  navigator.clipboard.writeText(codeToCopy).then(() => {
+    const btn = document.getElementById('copyBtn');
+    const originalHTML = btn.innerHTML;
+    
+    btn.innerHTML = '<i class="fa-solid fa-check"></i> ¡Copiado!';
+    btn.classList.add('success'); // Asegúrate de tener este estilo en tu CSS
+
+    setTimeout(() => {
+      btn.innerHTML = originalHTML;
+      btn.classList.remove('success');
+    }, 2000);
+  });
+}
+</script>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">bellman_ford.py</span>
+    <p>
+      Algoritmo propuesto por <strong style="color:var(--txt)">Richard Bellman</strong> (1958) y <strong style="color:var(--txt)">Lester Ford Jr.</strong> (1956). &nbsp;|&nbsp;
+      Complejidad O(V·E) &nbsp;|&nbsp; Soporta pesos negativos &nbsp;|&nbsp; Detecta ciclos negativos.<br>
+      <span style="display:block;margin-top:8px">
+        Página estática · Desplegable en <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>
+      </span>
+    </p>
+  </div>
+</footer>
 
 <!-- ══════════════ FOOTER ══════════════ -->
 <footer>
@@ -1114,17 +1061,49 @@ document.querySelectorAll('.reveal').forEach((el, i) => {
    COPY CODE
 ══════════════════════════════════════════ */
 function copyCode() {
-  const pre = document.getElementById('codeBlock');
-  // Strip HTML tags to get plain text
-  const text = pre.innerText.replace(/^\s*\d+\t/gm, '');
-  navigator.clipboard.writeText(text).then(() => {
+  // Definimos el código que queremos que se copie realmente
+  const simpleCode = `def bellman_ford(vertices, aristas, inicio):
+    # Paso 1: Inicializar distancias desde el origen a todos los demás como infinito
+    distancias = {v: float('inf') for v in vertices}
+    distancias[inicio] = 0
+    
+    # Paso 2: Relajar todas las aristas V - 1 veces
+    for _ in range(len(vertices) - 1):
+        for u, v, peso in aristas:
+            if distancias[u] != float('inf') and distancias[u] + peso < distancias[v]:
+                distancias[v] = distancias[u] + peso
+                
+    # Paso 3: Verificar ciclos negativos
+    for u, v, peso in aristas:
+        if distancias[u] != float('inf') and distancias[u] + peso < distancias[v]:
+            print("¡Atención! El grafo contiene un ciclo de peso negativo.")
+            return None
+
+    return distancias
+
+# Datos de prueba
+nodos = [1, 2, 3, 4]
+conexiones = [(1, 2, 4), (1, 4, 5), (4, 3, 3), (3, 2, -10)]
+resultado = bellman_ford(nodos, conexiones, 1)`;
+
+  // Usamos la API del portapapeles para copiar el texto definido arriba
+  navigator.clipboard.writeText(simpleCode).then(() => {
+    // Feedback visual opcional en el botón
     const btn = document.getElementById('copyBtn');
-    btn.innerHTML = '<i class="fa-solid fa-check"></i> Copiado';
-    btn.classList.add('copied');
+    const originalHTML = btn.innerHTML;
+    
+    btn.innerHTML = '<i class="fa-solid fa-check"></i> ¡Copiado!';
+    btn.style.background = '#28a745'; // Color verde de éxito
+    btn.style.color = 'white';
+
+    // Volver al estado original después de 2 segundos
     setTimeout(() => {
-      btn.innerHTML = '<i class="fa-regular fa-copy"></i> Copiar';
-      btn.classList.remove('copied');
-    }, 2200);
+      btn.innerHTML = originalHTML;
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 2000);
+  }).catch(err => {
+    console.error('Error al copiar: ', err);
   });
 }
 
